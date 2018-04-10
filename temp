@@ -1,0 +1,27 @@
+int x = 0;
+float temp;
+void setup() 
+{
+  Serial.begin(9600);
+}
+
+void loop() 
+{
+  if(Serial.available())
+  {
+    x = Serial.read();
+    x=x-'0';
+    if(x==0){
+      temp = analogRead(A0);
+      temp = temp * 0.48828125;
+      Serial.print("Temperature : ");
+      Serial.print(temp);
+      Serial.print(" C");
+      Serial.println();
+      delay(1000);
+    }
+    if(x==1){
+      Serial.println("NO OUTPUT");
+    }
+  }
+}
